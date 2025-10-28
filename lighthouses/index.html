@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighthouse Collection - Drennen's Gifts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #3498db;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #2980b9;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .products-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin: 3rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-right: 3px solid #3498db;
+            flex-shrink: 0;
+        }
+
+        .product-info {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .product-features {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .product-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .product-features li {
+            color: #555;
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .product-features li::before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .buy-button {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            margin-top: auto;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .buy-button:active {
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                gap: 2rem;
+            }
+            
+            .product-card {
+                flex-direction: column;
+            }
+            
+            .product-image {
+                width: 100%;
+                height: 300px;
+                border-right: none;
+                border-bottom: 3px solid #3498db;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .product-info {
+                padding: 1.5rem;
+            }
+            
+            .product-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-link">← Back to Drennen's Gifts</a>
+            <h1>🏮 Lighthouse Collection</h1>
+            <p class="subtitle">Authentic LED Lighthouse Replicas</p>
+        </header>
+
+        <div class="intro-text">
+            <p>Welcome to our exclusive Lighthouse Collection featuring meticulously crafted replicas of the historic Concord Lighthouse in Havre de Grace, Maryland. Each lighthouse is equipped with LED lighting and includes a detailed replica of the famous John O'Neill Battery cannon, bringing maritime history to life in your home.</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Large Lighthouse -->
+            <div class="product-card">
+                <img src="../images/SmallLighthouseWithCannon.jpg" alt="Large 10 inch LED Concord Lighthouse" class="product-image">
+                <div class="product-info">
+                    <h2 class="product-title">Large 10" LED Concord Lighthouse</h2>
+                    <div class="product-price">$40.00</div>
+                    <p class="product-description">
+                        This stunning 10-inch replica captures the majesty of the historic Concord Lighthouse that has stood sentinel over the Chesapeake Bay in Havre de Grace, Maryland since 1827. Built to withstand the test of time, this lighthouse guided countless vessels through the treacherous waters where the Susquehanna River meets the bay.
+                    </p>
+                    <div class="product-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Authentic 10-inch scale replica</li>
+                            <li>Bright LED lighting system</li>
+                            <li>Detailed John O'Neill Battery cannon replica included</li>
+                            <li>Hand-painted maritime details</li>
+                            <li>Sturdy base with historical information plaque</li>
+                            <li>Perfect for collectors and maritime enthusiasts</li>
+                        </ul>
+                    </div>
+                    <button class="buy-button" onclick="handlePurchase('large-lighthouse')">
+                        Buy Now - $40.00
+                    </button>
+                </div>
+            </div>
+
+            <!-- Small Lighthouse -->
+            <div class="product-card">
+                <img src="../images/SmallLighthouseWithCannon.jpg" alt="Small 5 inch LED Concord Lighthouse" class="product-image">
+                <div class="product-info">
+                    <h2 class="product-title">Small 5" LED Concord Lighthouse</h2>
+                    <div class="product-price">$25.00</div>
+                    <p class="product-description">
+                        A charming 5-inch version of the beloved Concord Lighthouse, perfect for smaller spaces while maintaining all the authentic details of its larger counterpart. This compact replica brings the same historical significance and coastal charm of Havre de Grace's famous landmark to any room.
+                    </p>
+                    <div class="product-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Compact 5-inch scale replica</li>
+                            <li>Energy-efficient LED lighting</li>
+                            <li>Miniature John O'Neill Battery cannon included</li>
+                            <li>Precision-crafted details</li>
+                            <li>Elegant display base</li>
+                            <li>Ideal for desk, shelf, or bedside display</li>
+                        </ul>
+                    </div>
+                    <button class="buy-button" onclick="handlePurchase('small-lighthouse')">
+                        Buy Now - $25.00
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Drennen's Gifts. All rights reserved. | Bringing Maritime History Home</p>
+        </footer>
+    </div>
+
+    <script>
+        function handlePurchase(productType) {
+            // This is a mockup - no backend integration yet
+            const productNames = {
+                'large-lighthouse': 'Large 10" LED Concord Lighthouse ($40.00)',
+                'small-lighthouse': 'Small 5" LED Concord Lighthouse ($25.00)'
+            };
+            
+            const productName = productNames[productType];
+            
+            alert(`Thank you for your interest in the ${productName}!\n\nThis is currently a mockup. Our e-commerce system is coming soon!\n\nFor now, please contact us directly to place your order.`);
+        }
+    </script>
+</body>
+</html>
